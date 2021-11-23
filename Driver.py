@@ -1,6 +1,7 @@
 from inputs.PianoReader import PianoReader
 from lights.SimpleTimedMode import SimpleTimedMode
 from lights.RainbowMode import RainbowMode
+from lights.RainbowKeyMode import RainbowKeyMode
 from lights.SimpleMode import SimpleMode
 
 from controls.AudioToLights import AudioToLights
@@ -11,8 +12,9 @@ pianoReader = PianoReader()
 
 # mode is the program we want to use for processing
 # signals from the piano
-#mode = SimpleTimedMode(50, (255,0,0), (0,0,255))
-mode = RainbowMode(50)
+mode = SimpleTimedMode(50, (255,0,0), (0,0,255))
+#mode = RainbowMode(50)
+#mode = RainbowKeyMode(50)
 #mode = SimpleMode(50, (255,0,0), (0,0,255))
 
 # specify how the lights are connected

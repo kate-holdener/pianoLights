@@ -4,7 +4,7 @@ from .SimpleMode import SimpleMode
 
 class SimpleTimedMode(SimpleMode):
     def __init__(self, numLights, colorOn, colorOff, delayOff=5):
-        super.__init__(numLights)
+        super().__init__(numLights, colorOn, colorOff)
         self.on = colorOn
         self.off = colorOff
         self.delayOff = delayOff
