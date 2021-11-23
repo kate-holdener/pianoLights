@@ -2,7 +2,7 @@ from .lightsMode import LightsMode
 
 class SimpleMode(LightsMode):
     def __init__(self, numLights, colorOn, colorOff):
-        super(numLights)
+        super().__init__(numLights)
         self.on = colorOn
         self.off = colorOff
 
