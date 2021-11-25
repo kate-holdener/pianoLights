@@ -4,6 +4,7 @@ import urllib
 from lights.SimpleMode import SimpleMode
 
 class LightsRequestHandler(BaseHTTPRequestHandler):
+    mode = None
     def _set_headers(self):
         self.send_response(200)
         self.send_header('Content-type', 'text/html')
@@ -18,29 +19,15 @@ class LightsRequestHandler(BaseHTTPRequestHandler):
         #if self.path == '/lights':
         #    do_lights(self)
         qs = urllib.parse.parse_qs(o.query)
-        print(qs)
-        #imsi = urlparse.parse_qs(urlparse.urlparse(self.path).query).get('imsi', None)
-        #print(imsi)
+        action=int(o.query.find('event'))
+        key=int(o.query.find('key'))
+        velocity=int(o.query.find('velocity'))
+        deltatime=float(o.query.find('deltatime'))
+        mode.processEvent(((action,key,velocity),deltatime))
 
     def do_lights(self):
         pass 
 
-    def do_POST(self):
-        self._set_headers()
-        print(self.headers)
-        content_len = int(self.headers.get('Content-Length'))
-        post_body = self.rfile.read(content_len)
-        self.wfile.write("received post request:<br>{}".format(post_body))
-
-class LightsServer(HTTPServer):
-    def __init__(self, hostPort, handler):
-        super().__init__(hostPort, handler)
-        self.mode = None
-
-    def setLightsMode(self, mode):
-        self.mode = mode
-        
-httpd = LightsServer(('', 8000), LightsRequestHandler)
-mode = SimpleMode(50, (255,0,0), (0,0,255))
-httpd.setLightsMode(mode)
+LightsRequestHandler.mode = SimpleMode(50, (255,0,0), (0,0,255))
+httpd = HTTPServer(('', 8000), LightsRequestHandler)
 httpd.serve_forever()
