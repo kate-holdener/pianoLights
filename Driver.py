@@ -1,11 +1,10 @@
-from inputs.PianoReader import PianoReader
-from lights.SimpleTimedMode import SimpleTimedMode
-from lights.RainbowMode import RainbowMode
-from lights.RainbowKeyMode import RainbowKeyMode
-from lights.SimpleMode import SimpleMode
+#from lights.SimpleTimedMode import SimpleTimedMode
+#from lights.RainbowMode import RainbowMode
+#from lights.RainbowKeyMode import RainbowKeyMode
+#from lights.SimpleMode import SimpleMode
 from lights.SimpleRainbowMode import SimpleRainbowMode
-from lights.NoMode import NoMode
 
+from inputs.PianoReader import PianoReader
 from controls.AudioToLights import AudioToLights
 from controls.DirectConnect import DirectConnect
 
