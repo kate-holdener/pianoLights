@@ -6,9 +6,9 @@ class AudioToLights:
 
     def run(self):
         self.terminate = False
-        while (not self.terminate):
+        while not self.terminate:
             event = self.eventQ.get()
             self.lightsInterface.processEvent(event)
 
-    def terminate(self):
+    def stop(self):
         self.terminate = True
