@@ -20,4 +20,4 @@ jobs:
         pip install pylint
     - name: Analysing the code with pylint
       run: |
-        pylint --module-naming-style=PascalCase --class-naming-style=PascalCase naming-style=camelCase  $(git ls-files '*.py')
+        pylint --module-naming-style=PascalCase --class-naming-style=PascalCase --naming-style=camelCase  $(git ls-files '*.py')
